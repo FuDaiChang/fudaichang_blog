@@ -14,7 +14,7 @@ Hosting service: 选择Custom
 Repository type： 选择Subversion
 Path：服务器中对应的repository地址
 
-git是一款开源的、免费的分布式版本控制系统，它可以更高效的处理项目。在reviewboard中建立一个git repository时，需要填写下列信息
+git是一款开源的、免费的分布式版本控制系统，它可以更高效的处理项目。在reviewboard中建立一个git repository时，需要填写下列信息：
 Name : 项目的名字。
 Hosting service: 选择Custom
 Repository type： 选择Git
