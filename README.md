@@ -45,3 +45,7 @@ test6
 其中'-400,8'表示展示这段diff时，远程文件是从该文件的第400行开始的，共展示8行；'+400,7'表示本地文件是从第397行开始的，共展示7行。在每个区块中，以'-'开头表示本地文件删除了该行，以'+'开头表示本地文件增加了该行。
 
 4、我对reviewboard中数据分析的一些看法
+
+reviewboard在进行code review的时候十分方便，而且还支持多种版本控制工具。在review board的dashboard中还可以选择一些column来展示review request的相关信息，包括review request的提交者，发出的时间，最后一次更新的时间，是否有人ship it，代码被review的次数等。而且reviewboard展示diff的UI做的也相当不错，让人一目了然，删除的部分，增加的部分以及替换的部分都用不同的颜色高亮。
+
+当然它在某些方面也存在不足，如果一个团队要对他们的成员的code review进行分析的时候就不太方便了，例如团队的leader想统计团队每一个成员某一段时间内的review request。那么就得手动的分析每个成员在这段时间内发的review request的次数，有的时候leader还想知道每次review request中增加的、删除的以及替换的代码量，然而这些信息并不能快捷地得到。还有一点就是在reviewboard与某些版本控制工具（如git）一块使用的时候，可以将reviewboard的post-review命令与git commit结合使用，当使用git commit命令时会自动触发一个脚本执行post-review命令，那么开发人员就不需要手动地再输入post-review命令了（其实我有个同事已经把这个做了），希望reviewboard在将来做的更好。当然以上是我自己的一些建议，如果有什么不妥之处，敬请指出。
