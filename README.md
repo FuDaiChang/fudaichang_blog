@@ -23,4 +23,10 @@ Mirror path：git repository的URL（如 ssh://git@your.server.com/var/lib/git/n
 
 3、reviewboard中diff的基本原理
 
+reviewboard中有两种主要的方法生成一个review request：通过web UI和rbtools 的post-review命令。后者的方法使用的居多，因为它内部为你做了很多其他的工作，你只需输入几行命令就可以了。如果采用web UI的方式，你需要上传一个diff文件。这个diff文件必须采用统一的diff格式，diff文件需要包含远端服务器文件的信息，这个信息跟你采用的版本控制系统有关，在你手动生成diff时，你最好查阅版本控制系统的文档以防止出错。
+
+RBTools是一系列命令行工具的集合，其中post-review是最重要的命令之一。post-review命令可以用来扫描源代码路径，从而生成diff，并将这个diff上传到一个新的或者已经存在的review request。
+
+rbtools是基于最长公共子序列（LCS）算法生成diff文件的。首先它会比较本地代码和服务器远程代码，如果某一行代码在本地文件中不存在了，而服务器端仍然存在，表示本地删除了这一行代码，删除的代码用'-'标记；如果某一行代码在本地存在，而在服务器端不存在，则表示本地增加了这一行代码，增加的代码用'+'标记。
+
 4、我对reviewboard中数据分析的一些看法
