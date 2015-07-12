@@ -2,7 +2,21 @@
 
 1、reviewboard的简介
 
-reviewboard是一个开源的代码评审工具，是用Python框架Django开发的。它在审查本地文件与远程文件的diff上做的非常优秀。它进行代码评审（codereview）有两种形式：pre-commit-review（代码提交到服务器前进行代码评审）和post-commit-review（代码提交到服务器后进行代码评审）。pre-commit-review是这样工作的：如果你更改了本地文件，那么reviewboard可以很好地帮助程序员发出一个评审代码的请求，你可以指定帮你评审代码的人，别人可以评审你的代码并对你的代码提出评论，然后你可以根据评论修改自己的代码并再次发出一个评审代码的请求直至代码被评审人认可。同时你还可以上传一些截图帮助别人理解你的代码。如果你的代码被评审人认可，那么他会给你发一个通知，告诉你可以把代码提交到服务器上了，如果你把代码提交到了服务器上，那么你可以在reviewboard上把你的评审请求改成已提交。这一系列流程在很大程度上提升了程序员的开发效率，节省了程序员的宝贵时间。
+reviewboard是一个开源的代码评审工具，是用Python框架Django开发的，在代码评审方面做的非常优秀。它进行代码评审（codereview）有两种形式：pre-commit-review（代码提交到服务器前进行代码评审）和post-commit-review（代码提交到服务器后进行代码评审）。
+
+reviewboard的pre-commit-review工作模式是这样的：
+（1）更改本地代码，创建一个review request；
+（2）指定帮你评审代码的人，填写代码评审请求的相关信息，发布你的评审请求；
+（3）别人评审你的代码并对你的代码提出评论；
+（4）根据评论修改自己的代码并更新之前的代码评审请求直至代码被评审人认可。同时你还可以上传一些截图帮助别人理解你的代码；
+（5）评审人认可了你的代码，并给出一个ship it,告诉你可以把代码提交到服务器上了;
+（6）把代码提交到服务器上，并在reviewboard上把你的评审请求改成已提交。
+
+reviewboard的post-commit-review工作模式是这样的：
+（1）更改本地代码，提交到服务器上；
+（2）服务器会对这次的commit产生一个revision号，使用post-review --revision=start version:end version命令创建一个review request，这个命令会触发一个脚本从而diff两个revision之间的差别；
+（3）后面的步骤跟pre-commit-review的方式类似。
+我个人认为pre-commit-review的方式更好，不容易污染服务器端的代码。总体上reviewboard的功能还是很强大的，在很大程度上提升了程序员的开发效率，节省了程序员的宝贵时间。
 
 同时，reviewboard还提供了一些API文档，如果你是大牛的话，你可以对它的源代码进行完善，当然如果你更改了reviewboard的源代码，那么你仍然需要按照刚才的流程来提交你的代码哦。
 
